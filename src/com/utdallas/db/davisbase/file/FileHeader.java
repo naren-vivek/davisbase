@@ -25,12 +25,18 @@ public class FileHeader {
 
 	}
 
+	public boolean incrementRowIdAndSave() {
+		this.nextRowId++;
+		return updateFileHeader();
+	}
+
 	public boolean updateFileHeader() {
 
 		try {
 			tableFile.seek(0);
 			tableFile.writeInt(rootPage);
 			tableFile.writeInt(noOfPages);
+			tableFile.writeInt(nextRowId);
 			return true;
 		} catch (IOException e) {
 			System.err.println("Error while updating file header.");

@@ -6,6 +6,7 @@ public class FileHeader {
 
 	int noOfPages;
 	int rootPage;
+	int nextRowId;
 	TableFile tableFile;
 
 	static int size = 8;

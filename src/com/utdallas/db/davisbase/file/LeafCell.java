@@ -2,7 +2,7 @@ package com.utdallas.db.davisbase.file;
 
 import java.io.IOException;
 
-public class LeafCell {
+public class LeafCell extends Cell {
 
 	short totalPayload;
 	int rowId;

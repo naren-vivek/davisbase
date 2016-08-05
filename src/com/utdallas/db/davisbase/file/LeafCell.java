@@ -10,15 +10,21 @@ public class LeafCell extends Cell {
 	byte[] colTypes;
 	byte[][] columns;
 
-	public void writeCell(TableFile file, long offset) throws IOException {
-		file.seek(offset);
-		file.writeShort(totalPayload);
-		file.writeInt(rowId);
-		file.writeByte(noOfColumns);
-		file.write(colTypes);
+	public void writeCell(TableFile tableFile, long offset) throws IOException {
+		tableFile.seek(offset);
+		tableFile.writeShort(totalPayload);
+		tableFile.writeInt(rowId);
+		tableFile.writeByte(noOfColumns);
+		tableFile.write(colTypes);
 		for (byte[] column : columns) {
-			file.write(column);
+			tableFile.write(column);
 		}
+	}
+
+	@Override
+	public Cell readCell(TableFile tableFile, long offset) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

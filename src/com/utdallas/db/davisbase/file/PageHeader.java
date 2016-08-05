@@ -5,7 +5,7 @@ import com.utdallas.db.davisbase.constants.PageType;
 
 public class PageHeader {
 
-	byte fileType;
+	byte pageType;
 	byte noOfCells;
 	short cellContentOffset;
 	long cellPointerOffset;
@@ -26,10 +26,10 @@ public class PageHeader {
 
 		try {
 			this.tableFile.seek(pageOffset);
-			this.fileType = this.tableFile.readByte();
+			this.pageType = this.tableFile.readByte();
 			this.noOfCells = this.tableFile.readByte();
 			this.cellContentOffset = this.tableFile.readShort();
-			if (this.fileType == PageType.INTERIOR_PAGE) {
+			if (this.pageType == PageType.INTERIOR_PAGE) {
 				this.rightPtr = this.tableFile.readInt();
 			}
 			this.cellPointerOffset = this.tableFile.getFilePointer();

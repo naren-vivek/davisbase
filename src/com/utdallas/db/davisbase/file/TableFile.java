@@ -32,6 +32,7 @@ public class TableFile extends RandomAccessFile {
 			// Writing file header
 			this.writeInt(1);
 			this.writeInt(1);
+			this.writeInt(1);
 
 			// Writing page header for 1st page (Leaf node)
 			this.writeByte(PageType.LEAF_PAGE);

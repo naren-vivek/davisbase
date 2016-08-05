@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import com.utdallas.db.davisbase.constants.Config;
 
-public class Page implements Iterator<Page> {
+public class Page {
 
 	int pageNo;
 	PageHeader header;
@@ -27,16 +27,29 @@ public class Page implements Iterator<Page> {
 		}
 	}
 
-	@Override
-	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	/*
+	 * Iterator for Page. Iterates through each cell in the page
+	 * 
+	 */
+	private class Itr implements Iterator<Cell> {
 
-	@Override
-	public Page next() {
-		// TODO Auto-generated method stub
-		return null;
+		short currentCell = 0;
+		short totalCells = header.noOfCells;
+
+		@Override
+		public boolean hasNext() {
+			return currentCell < totalCells;
+		}
+
+		@Override
+		public Cell next() {
+			long offset = ((pageNo - 1) * Config.PAGE_SIZE) + contentOffsets[currentCell++];
+
+			// Read the cell data
+
+			return null;
+		}
+
 	}
 
 }
